@@ -1,0 +1,13 @@
+.text {
+  font-weight: 400px;
+  font-size: 20px;
+  margin-bottom: 2px;
+  margin-left: 16px;
+}
+
+.input {
+  width: 360px;
+  height: 40px;
+  margin-left: 16px;
+  margin-bottom: 24px;
+}

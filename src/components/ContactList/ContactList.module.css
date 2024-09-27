@@ -1,0 +1,21 @@
+.wrapper {
+  display: inline-flex;
+  margin-left: 16px;
+  margin-bottom: 24px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  width: 365px;
+  height: 100px;
+
+  & button {
+    border: 1px solid grey;
+    margin: 28px 0 28px 64px;
+    background-color: rgb(195, 195, 195);
+    border: none;
+    transition: all 0.4s ease;
+    &:hover {
+      background-color: rgb(232, 209, 254);
+      cursor: pointer;
+    }
+  }
+}
