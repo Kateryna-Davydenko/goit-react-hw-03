@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
 import ContactList from "./components/ContactList/ContactList";
 import ContactForm from "./components/ContactForm/ContactForm";
 import SearchBox from "./components/SearchBox/SearchBox";
@@ -15,26 +14,20 @@ const App = () => {
   const [filter, setFilter] = useState("");
   const [allContacts, setAllContacts] = useState(contacts);
 
-  const saveContactsToLocal = () => {
-    localStorage.setItem("contacts", JSON.stringify(allContacts));
-  };
-
-  const getContactsFromLocal = () => {
+  useEffect(() => {
     const localContacts = JSON.parse(localStorage.getItem("contacts"));
     if (localContacts) {
       setAllContacts(localContacts);
     }
-  };
-  const filteredContacts = allContacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-  useEffect(() => {
-    getContactsFromLocal();
   }, []);
 
   useEffect(() => {
-    saveContactsToLocal();
+    localStorage.setItem("contacts", JSON.stringify(allContacts));
   }, [allContacts]);
+
+  const filteredContacts = allContacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
@@ -45,7 +38,7 @@ const App = () => {
   };
 
   const handleDelete = (id) => {
-    const updatedContacts = contacts.filter((contact) => contact.id !== id);
+    const updatedContacts = allContacts.filter((contact) => contact.id !== id);
     setAllContacts(updatedContacts);
   };
 
